@@ -12,6 +12,9 @@ const actions = {
     // commitApiDanhSachNguoiDung: ({commit}, payload) => {
     //     commit('getApiDanhSachNguoiDung', payload)
     // }
+    commitUrlService: ({commit}, payload) => {
+        commit('mutationUrlService', payload)
+    }
 }
 
 export default actions;

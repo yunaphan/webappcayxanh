@@ -12,6 +12,9 @@ const getters = {
     // getDanhSachNguoiDung: state => {
     //     return state.danhsachnguoidung
     // }
+    getUrlService: state => {
+        return state.url_service
+    }
 }
 
 export default getters;

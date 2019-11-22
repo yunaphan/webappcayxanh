@@ -6,6 +6,8 @@
       </f7-nav-left>
       <f7-nav-title>Hỗ trợ quản lí cây xanh</f7-nav-title>
     </f7-navbar>
+    <span class="esri-icon-locate locate1"></span>
+    <f7-button id="id-addtree" class="esri-icon-plus" @click="$f7router.navigate('/them-cay-xanh/')"></f7-button>
     <f7-block id="app">
       <div id="viewDiv"></div>
     </f7-block>
@@ -21,11 +23,8 @@ export default {
   },
   methods: {
     ...mapActions([
-      "loadbasemap", 
+      "loadbasemap",
     ]),
-    showSidebar(value){
-      this.ClassActive = !value
-    },
   },
   created() {
     this.loadbasemap()
@@ -43,6 +42,31 @@ export default {
 
     #sidebar{
       border-radius: 0;
+    }
+
+    .locate1{
+      position: absolute;
+      top: calc(50% + 22px);
+      left:50%;
+      z-index: 99999;
+      font-weight: 700;
+      color: red;
+      transform: translate(-50%, -50%);
+      font-size: 20px;
+
+    }
+
+    #id-addtree{
+      position: absolute;
+      right: 15px;
+      bottom: 10%;
+      z-index: 99999;
+      border: solid 1px #ccc;
+      border-radius: 0;
+      background-color: #fff;
+      color: #000000;
+      width: 32px;
+      height: 32px;
     }
 
 </style>

@@ -1,5 +1,6 @@
 import mutations from './mutations'
 import actions from './actions'
+import moment from 'moment'
 const state = {
     map: null,
     view: null,
@@ -10,7 +11,7 @@ const state = {
     dialog_update: false,
     feature: {
         geometry: {
-          
+            
         },  
         attributes: {
             SoHieu: null,
@@ -25,10 +26,14 @@ const state = {
             DuongKinh: null,
             NguoiCapNhat: null,
             MaTinhTrang: null,
-            NgayTrong: null,
+            NgayTrong: moment(new Date()).format('dd/MM/yyyy'),
+            NgayCapNhat: moment(new Date()).format('L')
         }
     },
-    searchs: []
+    searchs: [],
+    track: {
+
+    }
 }
 const getters = {
     getView: (state) => {
@@ -51,9 +56,10 @@ const getters = {
     },
     getSearch: (state) => {
         return state.searchs
+    },
+    getTrack: (state) => {
+        return state.track
     }
-
-    
 }
 export default{
     state,

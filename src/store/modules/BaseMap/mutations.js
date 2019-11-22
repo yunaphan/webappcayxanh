@@ -5,8 +5,9 @@ const mutations = {
             "esri/Map",
             "esri/views/MapView",
             "esri/layers/FeatureLayer",
-            "esri/widgets/Track",
+            // "esri/widgets/Expand",
             "esri/widgets/Search",
+            "esri/widgets/Track",
         ],{
             url: "https://js.arcgis.com/4.11/",
           
@@ -15,8 +16,9 @@ const mutations = {
             Map,
             MapView,
             FeatureLayer,
+            Search,
+            // Expand,
             Track,
-            Search
 
         ]) => {
             var map = new Map({
@@ -139,7 +141,10 @@ const mutations = {
             var track = new Track({
                 view: view
             });
-            view.ui.add(track, "bottom-right");
+            view.ui.add(track, "top-left");
+            state.track = track
+            state.feature.geometry = track.view.center
+            console.log(track.view)
 
             var ubg_searchwidget = new Search({
                 view: view,
@@ -177,7 +182,15 @@ const mutations = {
             ubg_searchwidget.includeDefaultSources = false;
             ubg_searchwidget.locationEnabled = false;
 
+            // var addTreeExpand = new Expand({
+            //     view: view,
+            //     // expandTooltip: "Thêm cây xanh",
+            //     // expandIconClass: "esri-icon-plus-circled",
+            // }); 
+
+            // view.ui.add(addTreeExpand, 'bottom-right')
         });
+        
     },
 }
 

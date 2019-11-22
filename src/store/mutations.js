@@ -12,6 +12,9 @@ const mutations = {
     // getApiDanhSachNguoiDung: (state, payload) => {
     //     state.danhsachnguoidung = payload
     // }
+    mutationUrlService: (state, payload) => {
+        state.url_service = payload
+    }
 }
 
 export default mutations;
