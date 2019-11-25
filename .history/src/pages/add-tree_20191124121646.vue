@@ -114,7 +114,7 @@ export default {
         getApiTinhTrangCayXanh(){
             axios.get("http://113.161.225.252:8000/trang-thai-cay-xanh/", {
                 headers: {
-                    Authorization: "Token "+ this.$stoe.state.token
+                    Authorization: "Token 638635059406d15db24dfecb856f414042a465ce"
                 }
             })
             .then((response) => {
@@ -124,7 +124,7 @@ export default {
         apiTuyenDuong(){
             axios.get('http://113.161.225.252:8000/danh-muc-tuyen-duong/', {
                 headers: {
-                    Authorization: "Token "+ this.$stoe.state.token
+                    Authorization: "Token 638635059406d15db24dfecb856f414042a465ce"
                 }
             })
             .then((response) => {

@@ -17,7 +17,7 @@ export default [
     component: LoginPage,
   },
   {
-    path: '/images/:objectid/',
+    path: '/images/',
     component: PageImage
   },
   {

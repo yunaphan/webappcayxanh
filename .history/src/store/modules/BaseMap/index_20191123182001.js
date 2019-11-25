@@ -2,7 +2,6 @@ import mutations from './mutations'
 import actions from './actions'
 import moment from 'moment'
 const state = {
-    viewImage: false,
     map: null,
     view: null,
     FeatureLayer: null,

@@ -34,7 +34,7 @@ export default {
             console.log(event)
             if(event.action.id == "viewImage")
             {
-                app.$f7router.navigate('/images/'+event.target.selectedFeature.attributes.OBJECTID+'/')
+                app.$f7router.navigate('/images/')
             }
         })
     });

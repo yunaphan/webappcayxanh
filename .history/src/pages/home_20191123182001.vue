@@ -14,31 +14,11 @@
   </f7-page>
 </template>
 <script>
-import { mapActions, mapGetters} from 'vuex'
+import { mapActions} from 'vuex'
 export default {
   data(){
     return{
       ClassActive: false,
-    }
-  },
-  computed:{
-    ...mapGetters(["getView"])
-  },
-  watch:
-  {
-    getView(newVal)
-    {
-      const app = this;
-      newVal.when(async () => {
-        newVal.popup.on("trigger-action", async (event) => {
-            console.log(event)
-            if(event.action.id == "viewImage")
-            {
-                app.$f7router.navigate('/images/'+event.target.selectedFeature.attributes.OBJECTID+'/')
-            }
-        })
-    });
-      console.log('test',newVal)
     }
   },
   methods: {
@@ -48,8 +28,6 @@ export default {
   },
   created() {
     this.loadbasemap()
-   
-    
   },
 }
 </script>

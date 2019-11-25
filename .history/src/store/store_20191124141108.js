@@ -17,7 +17,7 @@ const state = {
     // danhsachnguoidung: [],
     // loading: false,
     url_service: "https://tilis.vbgis.vn/arcgis/rest/services/DoThi/CayXanh/FeatureServer/0",
-    token: '6e53a1474b28d72e4a6837e493dc124fbde4a703',
+    token: '277aed44132a8c83ac0a0a5dbe9c0474ba73fc7c',
     url_web: 'http://113.161.225.252:8000/'
 }
 
