@@ -1,5 +1,4 @@
 import { loadModules } from 'esri-loader'
-import { stat } from 'fs';
 const mutations = {
     loadbasemap: (state) =>{
         loadModules([
@@ -180,7 +179,28 @@ const mutations = {
                 index: 2
             });
             
-            
+            view.when(async () => {
+                view.popup.on("trigger-action", async (event) => {
+                    if(event.action.id === "delTree"){
+                        state.selectedFeature = await event.target.selectedFeature
+                        var varning_del = await confirm('Bạn có chắc muốn xóa cây?');
+                        if (varning_del == true){
+                            await deleteFeatures({
+                                url: state.url,
+                                objectIds: [state.selectedFeature.attributes.OBJECTID]
+                            }).then(() => {
+                                state.FeatureLayer.refresh()
+                                view.popup.close()
+                            });
+                        }
+                    }
+                    if(event.action.id === "updateInfor"){
+                        state.dialog_update = await true
+                        state.selectedFeature = await event.target.selectedFeature
+                        // await console.log(state.selectedFeature)
+                    }
+                })
+            });
             ubg_searchwidget.includeDefaultSources = false;
             ubg_searchwidget.locationEnabled = false;
 

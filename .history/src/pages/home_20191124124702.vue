@@ -28,17 +28,7 @@ export default {
   {
     getView(newVal)
     {
-      const app = this;
-      newVal.when(async () => {
-        newVal.popup.on("trigger-action", async (event) => {
-            console.log(event)
-            if(event.action.id == "viewImage")
-            {
-                app.$f7router.navigate('/images/'+event.target.selectedFeature.attributes.OBJECTID+'/')
-            }
-        })
-    });
-      console.log('test',newVal)
+      console.log(newVal)
     }
   },
   methods: {

@@ -180,7 +180,15 @@ const mutations = {
                 index: 2
             });
             
-            
+            view.when(async () => {
+                view.popup.on("trigger-action", async (event) => {
+                    console.log(event)
+                    if(event.action.id == "viewImage")
+                    {
+                        state.viewImage = true
+                    }
+                })
+            });
             ubg_searchwidget.includeDefaultSources = false;
             ubg_searchwidget.locationEnabled = false;
 

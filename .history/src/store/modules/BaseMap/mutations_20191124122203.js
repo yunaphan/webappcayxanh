@@ -1,5 +1,4 @@
 import { loadModules } from 'esri-loader'
-import { stat } from 'fs';
 const mutations = {
     loadbasemap: (state) =>{
         loadModules([
@@ -179,8 +178,9 @@ const mutations = {
                 position: "bottom-right",
                 index: 2
             });
-            
-            
+            view.on("click", (event) => {
+                console.log(event)
+            })
             ubg_searchwidget.includeDefaultSources = false;
             ubg_searchwidget.locationEnabled = false;
 

@@ -6,7 +6,7 @@ import DynamicRoutePage from './pages/dynamic-route.vue';
 import NotFoundPage from './pages/not-found.vue';
 import PanelLeftPage from './pages/panel-left.vue';
 import TrangThemCay from './pages/add-tree.vue';
-import PageImage from './pages/page-image.vue'
+
 export default [
   {
     path: '/',
@@ -15,10 +15,6 @@ export default [
   {
     path: '/login',
     component: LoginPage,
-  },
-  {
-    path: '/images/:objectid/',
-    component: PageImage
   },
   {
     path: '/panel-left/',
