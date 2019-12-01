@@ -6,15 +6,30 @@ import DynamicRoutePage from './pages/dynamic-route.vue';
 import NotFoundPage from './pages/not-found.vue';
 import PanelLeftPage from './pages/panel-left.vue';
 import TrangThemCay from './pages/add-tree.vue';
+import TrangSuaCay from './pages/update-cx.vue';
 import PageImage from './pages/page-image.vue'
+import LichThiCong from './pages/lich-thi-cong.vue';
+import DSLichThiCong from './pages/ds-lich-thi-cong.vue';
 export default [
   {
     path: '/',
+    component: HomePage
+  },
+  {
+    path: '/login/',
+    component: LoginPage,
+  },
+  {
+    path: '/homepage/',
     component: HomePage,
   },
   {
-    path: '/login',
-    component: LoginPage,
+    path: '/lich-thi-cong/',
+    component: DSLichThiCong
+  },
+  {
+    path: '/lich-thi-cong/:id/',
+    component: LichThiCong
   },
   {
     path: '/images/:objectid/',
@@ -31,6 +46,10 @@ export default [
   {
     path: '/them-cay-xanh/',
     component: TrangThemCay,
+  },
+  {
+    path: '/sua-cay-xanh/:objectid/',
+    component: TrangSuaCay,
   },
   {
     path: '/form/',

@@ -14,6 +14,9 @@ const actions = {
     // }
     commitUrlService: ({commit}, payload) => {
         commit('mutationUrlService', payload)
+    },
+    commitUser: ({commit},payload) => {
+        commit("updateUser",payload)
     }
 }
 

@@ -27,7 +27,7 @@ const state = {
             DuongKinh: null,
             NguoiCapNhat: null,
             MaTinhTrang: null,
-            NgayTrong: moment(new Date()).format('dd/MM/yyyy'),
+            NgayTrong: moment(new Date()).format('yyyy-MM-dd'),
             NgayCapNhat: moment(new Date()).format('L')
         }
     },

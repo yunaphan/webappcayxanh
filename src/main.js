@@ -13,6 +13,8 @@ import './css/app.css';
 import store from "./store/store.js";
 Framework7.use(Framework7Vue)
 import * as firebase from 'firebase'
+import VueSession from 'vue-session'
+Vue.use(VueSession)
 
 Vue.config.productionTip = false
 const firebaseConfig = {

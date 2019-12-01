@@ -7,6 +7,7 @@
       <f7-nav-title>Hỗ trợ quản lí cây xanh</f7-nav-title>
     </f7-navbar>
     <span class="esri-icon-locate locate1"></span>
+    
     <f7-button id="id-addtree" class="esri-icon-plus" @click="$f7router.navigate('/them-cay-xanh/')"></f7-button>
     <f7-block id="app">
       <div id="viewDiv"></div>
@@ -15,6 +16,7 @@
 </template>
 <script>
 import { mapActions, mapGetters} from 'vuex'
+import axios from 'axios'
 export default {
   data(){
     return{
@@ -28,28 +30,64 @@ export default {
   {
     getView(newVal)
     {
+
       const app = this;
       newVal.when(async () => {
         newVal.popup.on("trigger-action", async (event) => {
-            console.log(event)
+            // console.log(event)
             if(event.action.id == "viewImage")
             {
-                app.$f7router.navigate('/images/'+event.target.selectedFeature.attributes.OBJECTID+'/')
+              app.$f7router.navigate('/images/'+event.target.selectedFeature.attributes.OBJECTID+'/')
+            }
+            if(event.action.id == "updateInfor")
+            {
+              app.$store.state.BaseMap.dialog_update = await true
+              app.$store.state.BaseMap.selectedFeature = await event.target.selectedFeature
+              console.log(app.$store.state.BaseMap.selectedFeature)
+              app.$f7router.navigate("/sua-cay-xanh/"+event.target.selectedFeature.attributes.OBJECTID+"/")
             }
         })
     });
-      console.log('test',newVal)
-    }
+      // this.loadbasemap()
+    },
+    
   },
   methods: {
     ...mapActions([
       "loadbasemap",
+      "commitUser",
     ]),
+    api_info_user()
+    {
+       axios.post(this.$store.state.url_web+ 'infomations-by-token/',{
+            key: this.$session.get('key')
+        },
+        {
+            headers: {
+                Authorization: "Token "+ this.$session.get('key')
+            }
+        }).then((response) => {
+            // console.log(response.data)
+            this.commitUser(response.data)
+        })
+    }
+  },
+  mounted() {
+    
+    if(!this.$session.has('key'))
+    {
+      this.$f7router.navigate('/login/')
+    }
+    this.loadbasemap()
+    this.api_info_user()
+    console.log('load mounted')
+  },
+  updated() {
+    console.log('updated')
   },
   created() {
-    this.loadbasemap()
-   
     
+    // this.loadbasemap()
   },
 }
 </script>

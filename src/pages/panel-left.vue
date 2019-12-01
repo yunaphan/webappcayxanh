@@ -1,10 +1,10 @@
 <template>
   <f7-page>
-    <f7-navbar title="Phan tiên">
+    <f7-navbar >
     </f7-navbar>
     <f7-list>
-      <f7-list-item link="/about/" title="About" view="#main-view" panel-close></f7-list-item>
-      <f7-list-item link="/form/" title="Form" view="#main-view" panel-close></f7-list-item>
+      <f7-list-item link="/login/" title="Đăng nhập" view="#main-view" panel-close></f7-list-item>
+      <f7-list-item link="/lich-thi-cong/" title="Lịch thi công" view="#main-view" panel-close></f7-list-item>
     </f7-list>
   </f7-page>
 </template>

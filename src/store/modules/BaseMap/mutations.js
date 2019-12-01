@@ -1,4 +1,5 @@
 import { loadModules } from 'esri-loader'
+import { deleteFeatures, updateFeatures } from '@esri/arcgis-rest-feature-layer';
 import { stat } from 'fs';
 const mutations = {
     loadbasemap: (state) =>{
@@ -22,6 +23,7 @@ const mutations = {
             Track,
 
         ]) => {
+            console.log('load map store');
             var map = new Map({
                 basemap: 'osm'
             });
@@ -86,6 +88,10 @@ const mutations = {
                                 label: "Ngày trồng cây",
                             },
                             {
+                                fieldName: "NgayCapNhat",
+                                label: "Ngày Cập Nhật",
+                            },
+                            {
                                 fieldName: "ThuocTinh",
                                 label: "Thuộc Tính",
                             },
@@ -118,11 +124,6 @@ const mutations = {
                         id: "viewImage",
                         title: "Xem Hình Ảnh Của Cây",
                         className: "esri-icon-media",
-                    },
-                    {
-                        id: "delTree",
-                        title: "Xóa Cây",
-                        className: "esri-icon-trash",
                     }
                 ]
             }
@@ -145,7 +146,7 @@ const mutations = {
             view.ui.add(track, "top-left");
             state.track = track
             state.feature.geometry = track.view.center
-            console.log(track.view)
+            // console.log(track.view)
 
             var ubg_searchwidget = new Search({
                 view: view,
@@ -193,6 +194,23 @@ const mutations = {
             // view.ui.add(addTreeExpand, 'bottom-right')
         });
         
+    },
+    uploadfeatureupdate: (state, payload) => {
+        state.selectedFeature = payload
+    },
+    updateFeature: (state, payload) => {
+        updateFeatures({
+            url: state.url,
+            features: [{
+                geometry:payload.geometry,
+                attributes: payload.attributes
+            }],
+        }).then(() => {
+            alert("Cập Nhật Thành công!");
+            state.FeatureLayer.refresh()
+            
+        })
+        state.FeatureLayer.refresh()
     },
 }
 

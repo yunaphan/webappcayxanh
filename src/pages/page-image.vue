@@ -2,17 +2,21 @@
 <f7-page>
     <f7-navbar title="Hình ảnh cây xanh " back-link="Back"></f7-navbar>
     <f7-block>
-        <img width="100%" height="auto" src="https://firebasestorage.googleapis.com/v0/b/htqlcx.appspot.com/o/70f076c2e3f507ab5ee4.jpg?alt=media&token=775abe03-e62b-4834-a345-92214fd5ca78" alt="">
         <f7-row>
+            <f7-photo-browser
+                :photos="photos"
+                theme="dark"
+                type="popup"
+                ref="popupDark"
+          ></f7-photo-browser>
             <f7-col width="33" id="camera" class="item-camera" >
                 <f7-icon class="icon-camera" ios="f7:camera" aurora="f7:camera" md="material:camera"></f7-icon>
                 <input ref="camera" class="file input-camera" type="file" multiple accept="image/*" @change="uploadFile()">
 
             </f7-col>
         </f7-row>
-        <f7-button>
-            Thêm hình ảnh cây xan mới
-            <input type="file" accept="/ima">
+        <f7-button @click="$refs.popupDark.open()" >
+            Xem hình ảnh ({{photos.length}})
         </f7-button>
     </f7-block>
 
@@ -26,12 +30,29 @@ export default {
     data()
     {
         return {
-            objectid: 0
+            objectid: 0,
+            photos: []
         }
     },
     methods:
     {
-         uploadFile()
+        api_image()
+        {
+            axios.get(this.$store.state.url_web+"hinh-anh-cay/?objectid="+this.$f7route.params.objectid,
+            {
+                headers: {
+                    Authorization: "Token "+ this.$store.state.token
+                }
+            }).then((response) => {
+                // console.log(response.data)
+                response.data.forEach((object) => {
+                    this.photos.push({
+                        url: object.duongdanhinhanh
+                    })
+                })
+            })
+        },
+        uploadFile()
         {
             var storageRef = firebase.storage().ref('');
             // Create a reference to 'mountains.jpg'
@@ -42,6 +63,9 @@ export default {
                   var storage = firebase.storage().ref('');
                   storage.child(files[index].name).getDownloadURL().then((url) => {
                       console.log(url)
+                      self.photos.push({
+                          url: url
+                      })
                       const data = new FormData()
                       data.append("UUID_BAR_KARAOKE", self.$f7route.params.UUID)
                       data.append("URL_IMAGE",url)
@@ -67,6 +91,7 @@ export default {
     },
     created()
     {
+        this.api_image()
         console.log(this.$f7route.params.objectid)
         
     }

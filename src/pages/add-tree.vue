@@ -1,7 +1,6 @@
 <template>
     <f7-page>
-        <f7-navbar title="Mẫu thêm cây xanh" back-link="Back"></f7-navbar>
-        <!--<f7-block-title>Mẫu thêm cây xanh</f7-block-title>-->
+        <f7-block-title>Mẫu thêm cây xanh</f7-block-title>
         <f7-list form style="margin: auto 0; ">
             <f7-list-item title="Số Hiệu">
                 <f7-input type="text" @input="getFeature.attributes.SoHieu = $event.target.value"></f7-input>
@@ -101,9 +100,9 @@ export default {
     },
     methods: {
         getApiTencx(){
-            axios.get("http://113.161.225.252:8000/ten-cay-xanh/", {
+            axios.get(this.$store.state.url_web+"ten-cay-xanh/", {
                 headers: {
-                    Authorization: "Token "+ this.$stoe.state.token
+                    Authorization: "Token "+ this.$store.state.token
                 }
             })
             .then((response) => {
@@ -112,9 +111,9 @@ export default {
             })
         },
         getApiTinhTrangCayXanh(){
-            axios.get("http://113.161.225.252:8000/trang-thai-cay-xanh/", {
+            axios.get(this.$store.state.url_web+"trang-thai-cay-xanh/", {
                 headers: {
-                    Authorization: "Token "+ this.$stoe.state.token
+                    Authorization: "Token "+ this.$store.state.token
                 }
             })
             .then((response) => {
@@ -122,9 +121,9 @@ export default {
             })
         },
         apiTuyenDuong(){
-            axios.get('http://113.161.225.252:8000/danh-muc-tuyen-duong/', {
+            axios.get(this.$store.state.url_web+"danh-muc-tuyen-duong/", {
                 headers: {
-                    Authorization: "Token "+ this.$stoe.state.token
+                    Authorization: "Token "+ this.$store.state.token
                 }
             })
             .then((response) => {
@@ -167,16 +166,16 @@ export default {
         },
         addFeature(){
             this.getFeature.geometry  = this.getView.center
-            console.log(this.getFeature ,this.getView)
-            
+            // console.log(this.getFeature ,this.getView)
             addFeatures({
                 url: this.$store.state.url_service,
                 features: [this.getFeature],
             })
             .then((response) => {
                 console.log(response)
-                this.getView.graphics.removeAll()
-                this.getFeatureLayer.refresh()
+                // this.getView.graphics.removeAll()
+                // this.getFeatureLayer.refresh()
+                this.$f7router.navigate('/')
             })
         },
     },

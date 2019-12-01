@@ -14,6 +14,10 @@ const mutations = {
     // }
     mutationUrlService: (state, payload) => {
         state.url_service = payload
+    },
+    updateUser:(state,payload) => {
+         state.user = payload
+         
     }
 }
 
