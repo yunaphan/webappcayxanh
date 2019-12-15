@@ -79,12 +79,12 @@ export default {
                     Authorization: "Token "+ this.$cookies.get('key')
                 }
             }).then((response) => {
-                axios.get(this.$store.state.url_web + 'chi-tiet-lich-thi-cong/?nhomthiconglich='+response.data.nhomthicong+'/',{
+                axios.get(this.$store.state.url_web + 'chi-tiet-lich-thi-cong/?nhomthiconglich='+response.data.nhomthicong,{
                     headers: {
                         Authorization: "Token "+ this.$store.state.token
                     }
                 }).then((response) => {
-                    this.hinh_thuc_thi_cong = response.data
+                    this.ds_lich_thi_cong = response.data
                 })
             })
         }

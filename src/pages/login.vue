@@ -1,28 +1,25 @@
 <template>
-    <div>
-        <f7-page login-screen>
-          <f7-login-screen-title>Đăng nhập</f7-login-screen-title>
-          <f7-list form>
-            <f7-list-input
-              label="Username"
-              type="text"
-              placeholder="Your username"
-              :value="username"
-              @input="username = $event.target.value"
-            ></f7-list-input>
-            <f7-list-input
-              label="Password"
-              type="password"
-              placeholder="Your password"
-              :value="password"
-              @input="password = $event.target.value"
-            ></f7-list-input>
-             <f7-list-button @click="login">Đăng nhập</f7-list-button>
-            <f7-block-footer>Phần mềm hỗ trợ quản lí thông tin cây xanh.<br>Phan Thị Thủy Tiên</f7-block-footer>
-          </f7-list>
-         
-      </f7-page>
-    </div>
+    <f7-page login-screen>
+        <p style="text-align:center; color:black; font-size: 30px ">Đăng nhập</p>
+        <f7-list form>
+          <f7-list-input
+            label="Username"
+            type="text"
+            placeholder="Your username"
+            :value="username"
+            @input="username = $event.target.value"
+          ></f7-list-input>
+          <f7-list-input
+            label="Password"
+            type="password"
+            placeholder="Your password"
+            :value="password"
+            @input="password = $event.target.value"
+          ></f7-list-input>
+            <f7-list-button @click="login">Đăng nhập</f7-list-button>
+          <f7-block-footer>Phần mềm hỗ trợ quản lí thông tin cây xanh.<br>Phan Thị Thủy Tiên</f7-block-footer>
+        </f7-list>
+    </f7-page>
 </template>
 <script>
 import axios from 'axios'

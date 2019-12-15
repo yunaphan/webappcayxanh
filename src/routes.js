@@ -13,7 +13,7 @@ import DSLichThiCong from './pages/ds-lich-thi-cong.vue';
 export default [
   {
     path: '/',
-    redirect: '/homepage/'
+    redirect: '/login/'
   },
   {
     path: '/login/',

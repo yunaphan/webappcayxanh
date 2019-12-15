@@ -1,7 +1,7 @@
 <template>
     <f7-page>
-          <f7-navbar title="Danh sách lịch thi công" back-link="Back"></f7-navbar>
-        <f7-block-title>Mẫu thêm cây xanh</f7-block-title>
+          <f7-navbar title="Mẫu thêm cây xanh" back-link="Back"></f7-navbar>
+        <!--<f7-block-title>Mẫu thêm cây xanh</f7-block-title>-->
         <f7-list form style="margin: auto 0; ">
             <f7-list-item title="Số Hiệu">
                 <f7-input type="text" @input="getFeature.attributes.SoHieu = $event.target.value"></f7-input>
@@ -57,9 +57,9 @@
             <f7-list-item title="Ghi chú">
                 <f7-input type="text" @input="getFeature.attributes.GhiChu = $event.target.value"></f7-input>
             </f7-list-item>
-            <f7-list-item title="Người cập nhật">
+            <!--<f7-list-item title="Người cập nhật">
                 <f7-input disabled type="text" :value="fullName" @input="getFeature.attributes.NguoiCapNhat = $event.target.value"></f7-input>
-            </f7-list-item>
+            </f7-list-item>-->
         </f7-list>
         
         <f7-button class="col" fill @click="addFeature">Thêm cây</f7-button>
